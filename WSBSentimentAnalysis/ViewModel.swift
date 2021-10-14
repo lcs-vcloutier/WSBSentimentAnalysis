@@ -18,7 +18,7 @@ protocol ViewModel: ObservableObject {
 final class ViewModelImpl: ViewModel {
     
     
-    @Published private(set) var coins: [Stock] = [] // access from outside can't change from outside
+    @Published private(set) var stocks: [Stock] = [] // access from outside can't change from outside
     
     private let service: Service
     
@@ -27,7 +27,7 @@ final class ViewModelImpl: ViewModel {
     }
     func getStocks() async {
         do {
-            self.coins = try await service.fetchStocks()
+            self.stocks = try await service.fetchStocks()
         } catch {
             print(error)
         }
