@@ -14,17 +14,23 @@ struct ContentView: View {
             if vm.stocks.isEmpty {
                 ProgressView()
             } else {
+                NavigationView {
+
                 List {
                     // Loop through dummy data
                     ForEach(vm.stocks, id: \.ticker) { item in
                         VStack (alignment: .leading) {
-                            Text("\(item.ticker):")
+                            Text("\(item.ticker) is \(item.sentiment.lowercased())")
                                 .font(.title)
                                 .bold()
-                         
+                                Text("\(item.no_of_comments) comments with a strength of \(String(format: "%.01f", arguments: [item.sentiment_score]))")
+
+
                             .font(.caption)
                         }
                     }
+                }
+                .navigationBarTitle("Reddit Analysis ")
                 }
             }
         }
