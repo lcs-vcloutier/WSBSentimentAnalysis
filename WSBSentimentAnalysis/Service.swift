@@ -15,8 +15,8 @@ protocol Service {
 final class ServiceImpl: Service {
     func fetchStocks() async throws -> [Stock] {
         let urlSession = URLSession.shared // Start URL Session
-        let url = URL(string: APIConstants.baseURL.appending("/reddit")) // Append to api constant
-        let (data, _) = try await urlSession.data(from: url!) // Talk to api
+        let url = URL(string: APIConstants.baseURL.appending("/reddit")) // Append to API constant
+        let (data, _) = try await urlSession.data(from: url!) // Talk to API
         return try JSONDecoder().decode([Stock].self, from: data) // If successful decode data if not throw an error
     }
 }

@@ -7,9 +7,7 @@
 
 import Foundation
 
-// ADDING THE COINS TO THE ARRAY
-// Interact with service class and handle any additional business logic
-
+// ADDING THE STOCKS TO THE ARRAY
 protocol ViewModel: ObservableObject {
     func getStocks() async
 }
@@ -18,7 +16,7 @@ protocol ViewModel: ObservableObject {
 final class ViewModelImpl: ViewModel {
     
     
-    @Published private(set) var stocks: [Stock] = [] // access from outside can't change from outside
+    @Published private(set) var stocks: [Stock] = []
     
     private let service: Service
     
