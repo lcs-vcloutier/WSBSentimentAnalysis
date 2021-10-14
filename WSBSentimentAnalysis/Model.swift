@@ -7,6 +7,11 @@
 
 import Foundation
 
+// DEFINE BASE URL
+enum APIConstants {
+    static let baseURL = "https://dashboard.nbshare.io/api/v1/apps"
+}
+
 // CREATING A DATA TYPE TO STORE EACH STOCK
 struct Stock: Decodable {
     let no_of_comments: Int
