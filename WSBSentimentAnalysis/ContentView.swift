@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var vm = ViewModelImpl(service: ServiceImpl())
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Group {
+            if vm.stocks.isEmpty {
+                ProgressView()
+            } else {
+                List {
+                    // Loop through dummy data
+                    ForEach(vm.stocks, id: \.ticker) { item in
+                        VStack (alignment: .leading) {
+                            Text("\(item.ticker):")
+                                .font(.title)
+                                .bold()
+                         
+                            .font(.caption)
+                        }
+                    }
+                }
+            }
+        }
+        .task {
+            await vm.getStocks()
+        }
+        
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
