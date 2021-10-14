@@ -17,5 +17,5 @@ struct Stock: Decodable {
     let no_of_comments: Int
     let sentiment: String
     let sentiment_score: Float
-    let Ticker: String
+    let ticker: String
 }
